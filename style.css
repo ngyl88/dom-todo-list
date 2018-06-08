@@ -15,10 +15,18 @@ ul {
 }
 
 ul li {
+	color: red;
 	padding: 1rem 0;
 }
 
 /* 2. create css class */
 .done {
+	color: lightgreen;
 	text-decoration: line-through;
+}
+
+/* additional */
+button.delete {
+	float: right;
+	vertical-align: middle;
 }
