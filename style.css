@@ -17,3 +17,8 @@ ul {
 ul li {
 	padding: 1rem 0;
 }
+
+/* 2. create css class */
+.done {
+	text-decoration: line-through;
+}
