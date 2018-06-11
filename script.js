@@ -34,17 +34,25 @@ tasks.forEach(task => {
 });
 
 // 3a. add click listener to li
-const onTaskClicked = function(evt) {
-  //console.log(evt.target);
-  if (!evt.target.classList.contains("delete")) {
+/*const onTaskClicked = function(evt) {
+  //console.log(evt.target.tagName);
+  if (!evt.target.classList.contains("delete") && evt.target.tagName === "LI") {
     // 4. toggle class
+    //console.log("li is clicked");
     evt.target.classList.toggle("done");
   }
-};
+};*/
 
-document.querySelectorAll("li").forEach(task => {
-  task.addEventListener("click", evt => onTaskClicked(evt));
+document.querySelector("ul").addEventListener("click", evt => {
+  //console.log(evt.target.tagName);
+  if (!evt.target.classList.contains("delete") && evt.target.tagName === "LI") {
+    // 4. toggle class
+    //console.log("li is clicked");
+    evt.target.classList.toggle("done");
+  }
 });
+
+//document.querySelector("ul").addEventListener("click", evt => {onTaskClicked(evt));
 
 // ADD MORE TO-DO ITEMS
 // 5. Add an input HTML and a button element
@@ -74,8 +82,7 @@ const addTodo = evt => {
     // iii.appendChild to ul
     const newTodoItemLi = document.createElement("li");
     newTodoItemLi.textContent = newTodoItem;
-    // ** Need to add event listener
-    newTodoItemLi.addEventListener("click", evt => onTaskClicked(evt));
+    // ** Need to add event listener --> Added into ul and filter
     document.querySelector("ul").appendChild(newTodoItemLi);
     // additional
     addDeleteBtn(newTodoItemLi);
