@@ -6,12 +6,12 @@ const addDeleteBtn = parent => {
   deleteBtn.innerText = "X";
   deleteBtn.classList.add("delete");
 
-  deleteBtn.addEventListener("click", evt => {
-    //console.log(evt);
-    const liParent = evt.target.parentElement;
+  deleteBtn.addEventListener("click", event => {
+    //console.log(event);
+    const liParent = event.target.parentElement;
     if (liParent.classList.contains("done")) {
       //console.log('Task is done and could be removed');
-      document.querySelector("ul").removeChild(evt.target.parentElement);
+      document.querySelector("ul").removeChild(event.target.parentElement);
     } else {
       alert("Task could not be removed as it's not done");
     }
@@ -34,25 +34,15 @@ tasks.forEach(task => {
 });
 
 // 3a. add click listener to li
-/*const onTaskClicked = function(evt) {
-  //console.log(evt.target.tagName);
-  if (!evt.target.classList.contains("delete") && evt.target.tagName === "LI") {
-    // 4. toggle class
-    //console.log("li is clicked");
-    evt.target.classList.toggle("done");
-  }
-};*/
 
-document.querySelector("ul").addEventListener("click", evt => {
-  //console.log(evt.target.tagName);
-  if (!evt.target.classList.contains("delete") && evt.target.tagName === "LI") {
+document.querySelector("ul").addEventListener("click", event => {
+  //console.log(event.target.tagName);
+  if (!event.target.classList.contains("delete") && event.target.tagName === "LI") {
     // 4. toggle class
     //console.log("li is clicked");
-    evt.target.classList.toggle("done");
+    event.target.classList.toggle("done");
   }
 });
-
-//document.querySelector("ul").addEventListener("click", evt => {onTaskClicked(evt));
 
 // ADD MORE TO-DO ITEMS
 // 5. Add an input HTML and a button element
@@ -66,8 +56,8 @@ button.innerText = "Add Todo";
 document.querySelector("body").appendChild(button);
 
 // 6a. Create function to get value from <input> element and add to ul#todo-list
-const addTodo = evt => {
-  //console.log(evt);
+const addTodo = event => {
+  //console.log(event);
 
   const inputBox = document.querySelector("input#new-todo");
   const newTodoItem = inputBox.value;
@@ -92,14 +82,14 @@ const addTodo = evt => {
 // 6b. Add event listener, on click
 document
   .querySelector("#btn-add")
-  .addEventListener("click", evt => addTodo(evt));
+  .addEventListener("click", event => addTodo(event));
 
 //8. Bonus: Allow user to create a todo when they press the Enter key
-document.querySelector("#new-todo").addEventListener("keypress", evt => {
-  //console.log('Keypress detected with charCode:', evt.charCode);
+document.querySelector("#new-todo").addEventListener("keypress", event => {
+  //console.log('Keypress detected with charCode:', event.charCode);
 
   // Key 'Enter' detected
-  if (evt.charCode === 13) {
-    addTodo(evt);
+  if (event.charCode === 13) {
+    addTodo(event);
   }
 });

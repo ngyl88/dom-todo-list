@@ -1,5 +1,5 @@
 body {
-	background-color: aqua;
+	background-color: lightpink;
 	border: 1px dotted tomato;
 	box-sizing: border-box;
 	border-width: 0 1px;
@@ -28,7 +28,7 @@ ul li {
 
 /* additional */
 button.delete {
-	background-color: aqua;
+	background-color: lightpink;
 	border: none;
 	color: red;
 	float: right;
