@@ -12,7 +12,14 @@ const addDeleteBtn = (parent) => {
 	deleteBtn.classList.add('delete');
 
 	deleteBtn.addEventListener('click', (evt) => {
-		console.log(evt.target);
+		//console.log(evt);
+		const liParent = evt.target.parentElement;
+		if(liParent.classList.contains('done')) {
+			//console.log('Task is done and could be removed');
+			document.querySelector('ul').removeChild(evt.target.parentElement);
+		} else {
+			alert("Task could not be removed as it's not done");
+		}
 	});
 
 	parent.appendChild(deleteBtn);
@@ -47,15 +54,19 @@ tasks.forEach((task) => {
 });*/
 
 //** Explicit function required to re-attached into event listener after step 6
-const onTaskClicked = function() {
-	// 3b. add class
-	//this.classList.add('done');
-	// 4. toggle class
-	this.classList.toggle('done');
+const onTaskClicked = function(evt) {
+
+	//console.log(evt.target);
+	if(!evt.target.classList.contains('delete')) {
+		// 3b. add class
+		//evt.target.classList.add('done');
+		// 4. toggle class
+		evt.target.classList.toggle('done');
+	}
 };
 
 document.querySelectorAll('li').forEach((task) => {
-	task.addEventListener('click', onTaskClicked)
+	task.addEventListener('click', (evt) => onTaskClicked(evt))
 });
 
 // ADD MORE TO-DO ITEMS
@@ -71,7 +82,7 @@ document.querySelector('body').appendChild(button);
 
 // 6a. Create function to get value from <input> element and add to ul#todo-list
 const addTodo = (evt) => {
-	console.log(evt);
+	//console.log(evt);
 
 	const inputBox = document.querySelector('input#new-todo');
 	const newTodoItem = inputBox.value;
@@ -80,14 +91,14 @@ const addTodo = (evt) => {
 		alert('Empty task!');
 	} else {
 		inputBox.value = '';
-		console.log('Last entered todo:', newTodoItem);
+		//console.log('Last entered todo:', newTodoItem);
 		// i.  createElement
 		// ii. changeAttributes
 		// iii.appendChild to ul
 		const newTodoItemLi = document.createElement('li');
 		newTodoItemLi.textContent = newTodoItem;
 		// ** Need to add event listener
-		newTodoItemLi.addEventListener('click', onTaskClicked);
+		newTodoItemLi.addEventListener('click', (evt) => onTaskClicked(evt));
 		document.querySelector('ul').appendChild(newTodoItemLi);
 		// additional
 		addDeleteBtn(newTodoItemLi);

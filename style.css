@@ -1,4 +1,5 @@
 body {
+	background-color: aqua;
 	border: 1px dotted tomato;
 	box-sizing: border-box;
 	border-width: 0 1px;
@@ -21,12 +22,22 @@ ul li {
 
 /* 2. create css class */
 .done {
-	color: lightgreen;
+	color: darkblue;
 	text-decoration: line-through;
 }
 
 /* additional */
 button.delete {
+	background-color: aqua;
+	border: none;
+	color: red;
 	float: right;
-	vertical-align: middle;
+	font-size: 0.8rem;
+	font-weight: bold;
+	vertical-align: top;
+}
+
+input {
+	font-size: 0.8rem;
+	width: 80%;
 }
